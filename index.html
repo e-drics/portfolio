@@ -386,11 +386,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      align-self: center;
     }
 
     .project-image img {
       width: 100%;
-      max-width: 200px;
+      max-width: clamp(180px, 34vw, 320px);
       opacity: 0.9;
     }
 
@@ -712,7 +713,8 @@
       <h1 class="hero-name">Eduards<br /><em>Dričs</em></h1>
       <p class="hero-subtitle">Skolēns · Rīgas Valsts 1. Ģimnāzija</p>
       <p class="hero-desc">
-        Šis ir mans portfolio, kurā apkopoti projekti un stundu darbi, ko apguvām šajā mācību gadā. Tā pat šī mājas lapa kalpo, kā programmēšanas valodas HTML un CSS noslēguma darbs.
+        Šis ir mans portfolio, kurā apkopoti projekti un stundu darbi, ko apguvām šajā mācību gadā. 
+        Tā pat šī mājas lapa kalpo, kā programmēšanas valodas HTML un CSS noslēguma darbs.
       </p>
     </div>
   </header>
@@ -759,11 +761,10 @@
       <div id="project-rastra" class="project-card reveal">
         <div class="project-content">
           <p class="project-index">01</p>
-          <h3 class="project-title">Rastra grafika & Animācija</h3>
+          <h3 class="project-title">Rastra grafika</h3>
           <p class="project-desc">
-            Darbs ar rastra grafikas programmām — pikseļu rediģēšana, 
-            slāņu pārvaldība un kustīgu attēlu izveide. Animācija tika 
-            radīta pa kadriem, lai veidotu gludu kustību.
+            Pirmajā šī gada tēmā bija rastra grafika, kurā mēs aplūkojām rastra grafikas pamatus izmantojot programmu <em>Gimp</em>.
+            Tēmas mēs beigās mēs izveidojām animāciju, par tēmu, kas mums tika iedalīta, tādā veidā nostabiliējot mūsu prasmes rastra grafikā.
           </p>
           <div class="project-tags">
             <span class="tag">Rastra grafika</span>
@@ -783,11 +784,12 @@
       <div id="project-vektor" class="project-card reveal">
         <div class="project-content">
           <p class="project-index">02</p>
-          <h3 class="project-title">Vektorgrafika — Glass Grid Logo</h3>
+          <h3 class="project-title">Vektorgrafiks</h3>
           <p class="project-desc">
-            Logo izstrāde, izmantojot vektorgrafikas rīkus. Rezultāts — 
-            mērogojams, asas līnijas saglabājošs <em>Glass Grid</em> 
-            zīmolvedības elements ar rombveida režģa motīvu.
+            Pēc rastra grafikas mēs apguvām vektorgrafiku. Iepazināmies ar atšķirībām, kādas ir starp rastra un vektorgrafiku, 
+            kā arī iepazināmies ar nozarēm, kurās izmanto katru no dizaina viedošanas veidiem. Kā šīs tēmas projekts bija izveidot logo,
+            priekš uzņēmuma, kura apraksts mums tika iedalīts un, izmantojot dator programmu <em>Inkscape</em> izveidot logo, 
+            kas būtu atbilstoš šajam uzņēmumam, un arī vajadzēja pamatot, kādēļ izvēlējāmies tieši šadu logo.
           </p>
           <div class="project-tags">
             <span class="tag">Inkscaped</span>
