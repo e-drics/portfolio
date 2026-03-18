@@ -7,55 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="CSS/mansStils.css" />
   <style>
-    /* ── Sekundārais navbar ── */
-    .zpd-subnav {
-      position: fixed;
-      top: 53px; /* tiek precizēts ar JS */
-      left: 0; right: 0;
-      z-index: 90;
-      display: flex;
-      align-items: stretch;
-      padding: 0 3rem;
-      background: var(--card-bg);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .zpd-subnav::-webkit-scrollbar { display: none; }
-
-    .zpd-subnav-link {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.64rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      text-decoration: none;
-      white-space: nowrap;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      transition: color 0.18s, border-color 0.18s;
-    }
-    .zpd-subnav-link span {
-      font-size: 0.5rem;
-      color: var(--accent);
-      opacity: 0.7;
-    }
-    .zpd-subnav-link:hover,
-    .zpd-subnav-link.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-      opacity: 1;
-    }
-
-    /* ── Layout ── */
-    .zpd-wrap { padding-top: 100px; /* tiek precizēts ar JS */ }
+    html { font-size: 15px; }
+    .zpd-wrap { padding-top: 80px; }
     .zpd-main { max-width: 900px; margin: 0 auto; }
-
-    /* Hero: nosaukums + kastīte blakus */
+    .nav-item > a { white-space: nowrap; }
     .zpd-hero-inner {
       display: flex;
       align-items: flex-start;
@@ -67,14 +22,8 @@
       flex-shrink: 0;
       margin-top: 0.5rem;
     }
-
-    /* ── Hide chevron on items without dropdown ── */
-    .nav-item.no-dd > a::after { display: none; }
-
-    /* ── Mobile ── */
     @media (max-width: 768px) {
-      .zpd-subnav    { position: static; padding: 0 1rem; border-top: none; }
-      .zpd-wrap      { padding-top: 0 !important; }
+      .zpd-wrap      { padding-top: 0; }
       .zpd-hero-inner { flex-direction: column; gap: 2rem; }
       .zpd-hero .zpd-doc-card { width: 100%; }
     }
@@ -82,7 +31,6 @@
 </head>
 <body>
 
-  <!-- MAIN NAV -->
   <nav>
     <a class="nav-logo" href="index.html">Eduards Dričs</a>
     <button class="nav-toggle" aria-label="Izvēlne" aria-expanded="false">☰</button>
@@ -104,11 +52,22 @@
           <a href="index.html#prasmes"><span class="dropdown-num">02</span>Prasmes</a>
         </div>
       </li>
-      <li class="nav-item no-dd">
+      <li class="nav-item">
         <a href="otrais.html">Individuālā tēma</a>
+        <div class="dropdown">
+          <a href="#anotacija"><span class="dropdown-num">00</span>Anotācija</a>
+          <a href="#ievads"><span class="dropdown-num">01</span>Ievads</a>
+          <a href="#kas-ir"><span class="dropdown-num">02</span>Kas ir personas dati</a>
+          <a href="#uzraugi"><span class="dropdown-num">03</span>Uzraugošās institūcijas</a>
+          <a href="#normas"><span class="dropdown-num">04</span>Galvenās normas</a>
+          <a href="#aizsardziba"><span class="dropdown-num">05</span>Kā tiek aizsargāti dati</a>
+          <a href="#secinajumi"><span class="dropdown-num">06</span>Secinājumi</a>
+          <a href="#plakats"><span class="dropdown-num">07</span>Plakāts</a>
+          <a href="#avoti"><span class="dropdown-num">08</span>Avoti</a>
+        </div>
       </li>
       <li class="nav-item">
-        <a href="#">Papildus projekti</a>
+        <a href="index.html#papildus-projekts">Papildus projekti</a>
         <div class="dropdown">
           <a href="forma.html"><span class="dropdown-num">01</span>Formas</a>
           <a href="dzerdaudz.html"><span class="dropdown-num">02</span>Dzērieni (daudz)</a>
@@ -118,28 +77,15 @@
     </ul>
   </nav>
 
-  <!-- SECONDARY SUBNAV -->
-  <nav class="zpd-subnav" aria-label="Saturs">
-    <a href="#anotacija" class="zpd-subnav-link"><span>00</span>Anotācija</a>
-    <a href="#ievads"    class="zpd-subnav-link"><span>01</span>Ievads</a>
-    <a href="#kas-ir"    class="zpd-subnav-link"><span>02</span>Personas dati</a>
-    <a href="#uzraugi"   class="zpd-subnav-link"><span>03</span>Institūcijas</a>
-    <a href="#normas"    class="zpd-subnav-link"><span>04</span>Normas</a>
-    <a href="#aizsardziba" class="zpd-subnav-link"><span>05</span>Aizsardzība</a>
-    <a href="#secinajumi"  class="zpd-subnav-link"><span>06</span>Secinājumi</a>
-    <a href="#plakats"   class="zpd-subnav-link"><span>07</span>Plakāts</a>
-    <a href="#avoti"     class="zpd-subnav-link"><span>08</span>Avoti</a>
-  </nav>
 
-  <div class="zpd-wrap">
+<div class="zpd-wrap">
   <main class="zpd-main">
 
-  <!-- ZPD HERO -->
   <section id="tema" class="zpd-hero">
     <div class="zpd-hero-inner">
       <div class="zpd-hero-text">
         <a href="index.html" class="back-btn">← Uz sākumlapu</a>
-        <p class="section-eyebrow" style="margin-top:1.8rem;">Zinātniskās pētniecības darbs</p>
+        <p class="section-eyebrow" style="margin-top:1.8rem;">Individuālā tēma</p>
         <h1 class="zpd-hero-title">Personas<br>personīgo datu<br>aizsardzība</h1>
       </div>
       <div class="zpd-doc-card">
@@ -163,7 +109,6 @@
     </div>
   </section>
 
-  <!-- 00 ANOTĀCIJA -->
   <section id="anotacija" style="border-top:1px solid var(--line);">
     <div class="page-section">
       <div class="zpd-label">
@@ -184,7 +129,6 @@
     </div>
   </section>
 
-  <!-- 01 IEVADS -->
   <section id="ievads" style="border-top:1px solid var(--line);">
     <div class="page-section">
       <div class="zpd-label">
@@ -202,7 +146,6 @@
     </div>
   </section>
 
-  <!-- 02 KAS IR PERSONAS DATI -->
   <section id="kas-ir" style="border-top:1px solid var(--line);">
     <div class="page-section">
       <div class="zpd-label">
@@ -223,7 +166,6 @@
     </div>
   </section>
 
-  <!-- 03 UZRAUGOŠĀS INSTITŪCIJAS -->
   <section id="uzraugi" style="border-top:1px solid var(--line);">
     <div class="page-section">
       <div class="zpd-label">
@@ -246,7 +188,6 @@
     </div>
   </section>
 
-  <!-- 04 GALVENĀS NORMAS -->
   <section id="normas" style="border-top:1px solid var(--line);">
     <div class="page-section">
       <div class="zpd-label">
@@ -289,7 +230,6 @@
     </div>
   </section>
 
-  <!-- 05 KĀ TIEK AIZSARGĀTI DATI -->
   <section id="aizsardziba" style="border-top:1px solid var(--line);">
     <div class="page-section">
       <div class="zpd-label">
@@ -341,7 +281,6 @@
     </div>
   </section>
 
-  <!-- 06 SECINĀJUMI -->
   <section id="secinajumi" style="border-top:1px solid var(--line);">
     <div class="page-section">
       <div class="zpd-label">
@@ -359,7 +298,6 @@
     </div>
   </section>
 
-  <!-- 07 PLAKĀTS -->
   <section id="plakats" style="border-top:1px solid var(--line);">
     <div class="page-section">
       <div class="zpd-label">
@@ -374,7 +312,6 @@
     </div>
   </section>
 
-  <!-- 08 AVOTI -->
   <section id="avoti" style="border-top:2px solid var(--line);">
     <div class="page-section">
       <div class="zpd-label">
@@ -417,10 +354,9 @@
     </div>
   </section>
 
-  </main><!-- zpd-main -->
-  </div><!-- zpd-wrap -->
+  </main>
+  </div>
 
-  <!-- FOOTER -->
   <footer>
     <span class="footer-left">Eduards Dričs</span>
     <span class="footer-right">Datorikas portfolio · 2025 / 2026</span>
@@ -428,7 +364,6 @@
 
   <script>
     (function() {
-      // ── Main nav: hamburger + dropdowns ──
       var nav = document.querySelector('nav');
       var navItems = document.querySelectorAll('.nav-item');
       var navToggle = document.querySelector('.nav-toggle');
@@ -470,46 +405,6 @@
       document.querySelectorAll('.dropdown a').forEach(function(a) {
         a.addEventListener('click', function() { closeAll(); });
       });
-
-      // ── Subnav: pozicionē tieši zem galvenā nav ──
-      var mainNavEl = document.querySelector('nav');
-      var subnavEl  = document.querySelector('.zpd-subnav');
-      var wrapEl    = document.querySelector('.zpd-wrap');
-
-      function reposition() {
-        if (window.matchMedia('(max-width:768px)').matches) return;
-        var navH    = mainNavEl.offsetHeight;
-        var subnavH = subnavEl.offsetHeight;
-        subnavEl.style.top      = navH + 'px';
-        wrapEl.style.paddingTop = (navH + subnavH) + 'px';
-      }
-
-      reposition();
-      window.addEventListener('resize', reposition);
-
-      // ── Subnav: highlight active section ──
-      var subLinks = document.querySelectorAll('.zpd-subnav-link');
-      var sections = [];
-      subLinks.forEach(function(link) {
-        var id = link.getAttribute('href').replace('#', '');
-        var el = document.getElementById(id);
-        if (el) sections.push({ el: el, link: link });
-      });
-
-      function onScroll() {
-        var navH    = mainNavEl.offsetHeight;
-        var subnavH = subnavEl.offsetHeight;
-        var scrollY = window.scrollY + navH + subnavH + 8;
-        var active  = null;
-        sections.forEach(function(s) {
-          if (s.el.offsetTop <= scrollY) active = s;
-        });
-        subLinks.forEach(function(l) { l.classList.remove('active'); });
-        if (active) active.link.classList.add('active');
-      }
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
     })();
   </script>
 
