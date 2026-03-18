@@ -1,0 +1,649 @@
+/* mansStils.css — Kopīgie stili visām portfolio lapām */
+
+:root {
+  --bg: #f5f2ed;
+  --ink: #1c1a17;
+  --ink-soft: #4a4540;
+  --accent: #c94a2b;
+  --line: #d4cfc8;
+  --card-bg: #ffffff;
+  --tag-bg: #ede9e3;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: var(--ink);
+}
+
+h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  color: var(--ink);
+}
+
+h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+p {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.85;
+  margin-bottom: 1.1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a:hover { opacity: 0.75; }
+
+ul { padding-left: 1.5rem; }
+li { color: var(--ink-soft); font-size: 0.88rem; line-height: 1.8; margin-bottom: 0.4rem; }
+
+/* ── NAV (shared for all pages) ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(245, 242, 237, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--accent); opacity: 1; }
+
+.nav-item { position: relative; }
+
+.nav-item > a {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-item > a::after {
+  content: '▾';
+  font-size: 0.6rem;
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.nav-item:hover > a::after { transform: rotate(180deg); }
+.nav-item.open > a::after { transform: rotate(180deg); }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.8rem);
+  left: 50%;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  min-width: 200px;
+  padding: 0.5rem 0;
+  box-shadow: 0 12px 32px rgba(28,26,23,0.10);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(-6px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  z-index: 200;
+}
+
+.nav-item:hover .dropdown,
+.nav-item.open .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -5px; left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 9px; height: 9px;
+  background: var(--card-bg);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.dropdown a:hover {
+  background: var(--tag-bg);
+  color: var(--accent);
+  opacity: 1;
+}
+
+.dropdown-num {
+  font-size: 0.6rem;
+  color: var(--accent);
+  opacity: 0.7;
+  min-width: 18px;
+}
+
+/* ── HAMBURGER ── */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-size: 1.15rem;
+  cursor: pointer;
+  color: var(--ink);
+  padding: 0.25rem 0.55rem;
+  line-height: 1;
+}
+
+/* ── PAGE CONTENT (non-index) ── */
+.page-content {
+  padding-top: 80px;
+}
+
+.page-section {
+  padding: 4rem 3rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.page-section + .page-section {
+  border-top: 1px solid var(--line);
+}
+
+.section-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+/* ── FORMS ── */
+.form-section {
+  padding: 4rem 3rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.form-section h2 {
+  margin-bottom: 1.5rem;
+}
+
+form {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+form p, form div {
+  margin-bottom: 0.8rem;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+input[type="text"],
+input[name="datums"],
+input[name="rez"],
+input[name="sk1"],
+input[name="sk2"],
+input[name="skaitlis1"],
+input[name="skaitlis2"],
+input[name="rezultats"] {
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0.3rem 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--ink);
+  background: var(--bg);
+  width: 160px;
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+button {
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.8rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+input[type="button"]:hover,
+input[type="reset"]:hover,
+button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+label {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+/* ── DZĒRIENI (dzer / dzerdaudz) ── */
+.dzer-section {
+  padding: 4rem 3rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.dzer-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.dzer-form {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2rem;
+}
+
+.dzer-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.dzer-result {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  min-height: 1.5rem;
+}
+
+#cena {
+  font-size: 0.88rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-left: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+#maksa {
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* ── BACK BUTTON ── */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 0.45rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.back-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  opacity: 1;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-left {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: var(--ink-soft);
+}
+
+.footer-right {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ── AVOTI (sources section) ── */
+.avoti-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.avoti-list li {
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.avoti-list a {
+  font-size: 0.82rem;
+  color: var(--accent);
+  word-break: break-word;
+}
+
+/* ── ZPD PAGE (otrais.html) ── */
+.zpd-wrap {
+  padding-top: 80px;
+}
+
+.zpd-main {
+  max-width: 860px;
+  margin-right: 295px;
+}
+
+.zpd-aside {
+  position: fixed;
+  top: 88px;
+  right: 3rem;
+  width: 255px;
+}
+
+.zpd-hero {
+  padding: 3.5rem 3rem 3rem;
+  border-bottom: 2px solid var(--line);
+}
+
+.zpd-hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0.6rem 0 2.5rem;
+}
+
+.zpd-toc { border-top: 1px solid var(--line); }
+
+.zpd-toc a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.18s, padding-left 0.18s;
+}
+
+.zpd-toc a:hover { color: var(--accent); padding-left: 0.6rem; opacity: 1; }
+
+.zpd-toc-num {
+  font-size: 0.58rem;
+  color: var(--accent);
+  opacity: 0.7;
+  min-width: 18px;
+}
+
+.zpd-doc-card {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2rem 1.8rem;
+}
+
+.zpd-doc-row { margin-bottom: 1.4rem; }
+
+.zpd-doc-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.zpd-doc-value {
+  font-size: 0.82rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.zpd-download {
+  display: block;
+  text-align: center;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 2px;
+  padding: 0.5rem 1rem;
+  margin-top: 1.8rem;
+  transition: background 0.2s, color 0.2s;
+}
+.zpd-download:hover { background: var(--accent); color: #fff; opacity: 1; }
+
+.zpd-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.zpd-label-num {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.zpd-label-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.gdpr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.gdpr-card {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.4rem 1.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.gdpr-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(201,74,43,0.07);
+}
+
+.gdpr-card-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.gdpr-card p { font-size: 0.78rem; margin-bottom: 0; }
+
+.zpd-sub {
+  border-left: 2px solid var(--line);
+  padding-left: 1.4rem;
+  margin: 1.5rem 0;
+}
+
+.zpd-sub h3 {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 0.6rem;
+}
+
+/* anchor scroll offset for fixed nav */
+.zpd-hero ~ section { scroll-margin-top: 88px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem 1.5rem;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .nav-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links > li {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-item > a {
+    padding: 0.6rem 0;
+    font-size: 0.75rem;
+  }
+
+  .nav-item > a::after { display: none; }
+
+  .dropdown {
+    position: static;
+    opacity: 1;
+    visibility: hidden;
+    transform: none !important;
+    box-shadow: none;
+    border: none;
+    border-left: 2px solid var(--line);
+    background: var(--tag-bg);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.28s ease;
+  }
+
+  .dropdown::before { display: none; }
+
+  .nav-item.open .dropdown {
+    visibility: visible;
+    max-height: 400px;
+    padding: 0.3rem 0 0.5rem 0.5rem;
+    opacity: 1 !important;
+  }
+
+  .nav-item:not(.open) .dropdown {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    max-height: 0 !important;
+    padding: 0 !important;
+  }
+
+  .page-section { padding: 2.5rem 1.5rem; }
+  .form-section { padding: 2.5rem 1.5rem; }
+  .dzer-section { padding: 2.5rem 1.5rem; }
+
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+  .zpd-main { margin-right: 0; }
+  .zpd-aside { position: static; width: 100%; padding: 0 1.5rem 2rem; }
+  .zpd-hero { padding: 2.5rem 1.5rem 2rem; }
+  .zpd-hero-title { font-size: 2.4rem; }
+  .gdpr-grid { grid-template-columns: 1fr; }
+}

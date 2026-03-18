@@ -6,6 +6,8 @@
   <title>Eduards Dričs — Portfolio</title>
   <link rel="icon" type="image/png" href="mazslogo.png" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="CSS/mansStils.css" />
   <style>
     :root {
       --bg: #f5f2ed;
@@ -655,20 +657,42 @@
       transform: translateY(0);
     }
 
+    /* ── HAMBURGER BUTTON ── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      font-size: 1.15rem;
+      cursor: pointer;
+      color: var(--ink);
+      padding: 0.25rem 0.55rem;
+      line-height: 1;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.5rem; }
+      nav { padding: 1rem 1.5rem; position: relative; flex-wrap: wrap; }
+      .nav-toggle { display: block; }
+      .nav-links { display: none; flex-direction: column; width: 100%; gap: 0; padding: 0.5rem 0 1rem; }
+      .nav-links.open { display: flex; }
+      .nav-links > li { border-bottom: 1px solid var(--line); }
+      .nav-item > a { padding: 0.6rem 0; font-size: 0.75rem; }
+      .nav-item > a::after { display: none; }
+      .dropdown { position: static; opacity: 1; visibility: hidden; transform: none !important; box-shadow: none; border: none; border-left: 2px solid var(--line); background: var(--tag-bg); padding: 0; max-height: 0; overflow: hidden; transition: max-height 0.28s ease; }
+      .dropdown::before { display: none; }
+      .nav-item.open .dropdown { visibility: visible; max-height: 400px; padding: 0.3rem 0 0.5rem 0.5rem; opacity: 1 !important; }
+      .nav-item:not(.open) .dropdown { opacity: 0 !important; visibility: hidden !important; max-height: 0 !important; padding: 0 !important; }
 
-      .hero { 
-        grid-template-columns: 1fr; 
+      .hero {
+        grid-template-columns: 1fr;
         gap: 0;
         padding-top: 80px;
       }
       .hero-left { padding: 4rem 1.5rem 2rem; }
 
       section { padding: 4rem 1.5rem; }
-      
+
       .project-card {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -686,6 +710,7 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">Eduards Dričs</a>
+    <button class="nav-toggle" aria-label="Izvēlne" aria-expanded="false">☰</button>
     <ul class="nav-links">
       <li class="nav-item">
         <a href="#darbi">Darbi</a>
@@ -702,6 +727,21 @@
         <div class="dropdown">
           <a href="#par-mani"><span class="dropdown-num">01</span>Par mani</a>
           <a href="#prasmes"><span class="dropdown-num">02</span>Prasmes</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="otrais.html">Individuālā tēma</a>
+        <div class="dropdown">
+          <a href="otrais.html"><span class="dropdown-num">01</span>Darbs</a>
+          <a href="otrais.html#avoti"><span class="dropdown-num">02</span>Avoti</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#papildus-projekts">Papildus projekti</a>
+        <div class="dropdown">
+          <a href="forma.html"><span class="dropdown-num">01</span>Formas</a>
+          <a href="dzerdaudz.html"><span class="dropdown-num">02</span>Dzērieni (daudz)</a>
+          <a href="dzer.html"><span class="dropdown-num">03</span>Dzērieni</a>
         </div>
       </li>
     </ul>
@@ -774,8 +814,7 @@
           </div>
         </div>
         <div class="project-image">
-          
-        </div>
+          <img src="images/datu_aizsardziba.gif" alt="Rastra grafika animācija" style="width:100%; max-width:320px;" />
         </div>
       </div>
 
@@ -796,7 +835,7 @@
           </div>
         </div>
         <div class="project-image">
-          <img src="logo.png" alt="Glass Grid Logo" />
+          <img src="images/logo.png" alt="Glass Grid Logo" />
         </div>
       </div>
 
@@ -841,10 +880,11 @@
             <span class="tag">Formulas</span>
             <span class="tag">Diagrammas</span>
           </div>
+          <a href="excelKD2026-1.xlsx" download style="display:inline-block;margin-top:1rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:0.4rem 0.9rem;border-radius:2px;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">⬇ Lejuplādēt aprēķini.xlsx</a>
         </div>
         <div class="project-image">
           <img
-            src="word.jpg.webp"
+            src="images/word.jpg.webp"
             alt="Excel un Word"
             style="width: 100%; max-width: 280px; border-radius: 4px; background: var(--line); display: block;"
           />
@@ -869,7 +909,7 @@
         </div>
         <div class="project-image">
           <img
-            src="netbeans.png"
+            src="images/netbeans.png"
             alt="Programmēšana"
             style="width: 100%; max-width: 280px; border-radius: 4px; background: var(--line); display: block;"
           />
@@ -986,6 +1026,33 @@
     </div>
   </section>
 
+  <!-- PAPILDUS PROJEKTS -->
+  <section id="papildus-projekts" style="border-top:2px solid var(--line);padding:4rem 3rem;">
+    <div style="max-width:900px;margin:0 auto;">
+      <div style="display:flex;align-items:baseline;gap:1.5rem;margin-bottom:2.5rem;">
+        <span style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);">Papildus projekti</span>
+        <div style="flex:1;height:1px;background:var(--line);"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;">
+        <a href="forma.html" style="display:block;border:1px solid var(--line);border-radius:4px;padding:2rem 1.8rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px rgba(201,74,43,0.08)'" onmouseout="this.style.borderColor='var(--line)';this.style.boxShadow='none'">
+          <span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.8rem;">01</span>
+          <span style="font-size:1rem;font-family:'DM Serif Display',serif;color:var(--ink);display:block;margin-bottom:0.5rem;">Formas</span>
+          <span style="font-size:0.75rem;color:var(--ink-soft);">Datuma un aprēķinu formas ar JavaScript</span>
+        </a>
+        <a href="dzerdaudz.html" style="display:block;border:1px solid var(--line);border-radius:4px;padding:2rem 1.8rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px rgba(201,74,43,0.08)'" onmouseout="this.style.borderColor='var(--line)';this.style.boxShadow='none'">
+          <span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.8rem;">02</span>
+          <span style="font-size:1rem;font-family:'DM Serif Display',serif;color:var(--ink);display:block;margin-bottom:0.5rem;">Dzērieni (daudz)</span>
+          <span style="font-size:0.75rem;color:var(--ink-soft);">Vairāku dzērienu izvēle ar summas aprēķinu</span>
+        </a>
+        <a href="dzer.html" style="display:block;border:1px solid var(--line);border-radius:4px;padding:2rem 1.8rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px rgba(201,74,43,0.08)'" onmouseout="this.style.borderColor='var(--line)';this.style.boxShadow='none'">
+          <span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.8rem;">03</span>
+          <span style="font-size:1rem;font-family:'DM Serif Display',serif;color:var(--ink);display:block;margin-bottom:0.5rem;">Dzērieni</span>
+          <span style="font-size:0.75rem;color:var(--ink-soft);">Viena dzēriena izvēle ar cenas parādīšanu</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <span class="footer-left">Eduards Dričs</span>
@@ -1006,13 +1073,22 @@
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
 
-    // Mobile nav dropdown: tap to open/close
+    // Mobile nav: hamburger + dropdown toggles
     const nav = document.querySelector('nav');
     const navItems = document.querySelectorAll('.nav-item');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinksList = document.querySelector('.nav-links');
 
-    function closeAllNavDropdowns(except = null) {
-      navItems.forEach(item => {
-        if (item !== except) item.classList.remove('open');
+    function closeAllNavDropdowns(except) {
+      navItems.forEach(item => { if (item !== except) item.classList.remove('open'); });
+    }
+
+    if (navToggle) {
+      navToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = navLinksList.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+        if (!isOpen) closeAllNavDropdowns();
       });
     }
 
@@ -1022,10 +1098,14 @@
       if (!trigger || !dropdown) return;
 
       trigger.addEventListener('click', (e) => {
-        // On desktop, keep normal link behavior; on touch/small screens, toggle
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
         if (!isMobile) return;
-
+        const href = trigger.getAttribute('href') || '#';
+        if (href !== '#') {
+          closeAllNavDropdowns();
+          navLinksList.classList.remove('open');
+          return;
+        }
         e.preventDefault();
         const willOpen = !item.classList.contains('open');
         closeAllNavDropdowns(willOpen ? item : null);
@@ -1039,6 +1119,7 @@
       if (!isMobile) return;
       if (nav && nav.contains(e.target)) return;
       closeAllNavDropdowns();
+      navLinksList && navLinksList.classList.remove('open');
     });
 
     // Close after choosing a dropdown link

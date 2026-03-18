@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Individuālā tēma — Eduards Dričs</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="CSS/mansStils.css" />
+  <style>
+    /* ── Sekundārais navbar ── */
+    .zpd-subnav {
+      position: fixed;
+      top: 53px; /* tiek precizēts ar JS */
+      left: 0; right: 0;
+      z-index: 90;
+      display: flex;
+      align-items: stretch;
+      padding: 0 3rem;
+      background: var(--card-bg);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .zpd-subnav::-webkit-scrollbar { display: none; }
+
+    .zpd-subnav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .zpd-subnav-link span {
+      font-size: 0.5rem;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+    .zpd-subnav-link:hover,
+    .zpd-subnav-link.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      opacity: 1;
+    }
+
+    /* ── Layout ── */
+    .zpd-wrap { padding-top: 100px; /* tiek precizēts ar JS */ }
+    .zpd-main { max-width: 900px; margin: 0 auto; }
+
+    /* Hero: nosaukums + kastīte blakus */
+    .zpd-hero-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 3rem;
+    }
+    .zpd-hero-text { flex: 1; min-width: 0; }
+    .zpd-hero .zpd-doc-card {
+      width: 240px;
+      flex-shrink: 0;
+      margin-top: 0.5rem;
+    }
+
+    /* ── Hide chevron on items without dropdown ── */
+    .nav-item.no-dd > a::after { display: none; }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .zpd-subnav    { position: static; padding: 0 1rem; border-top: none; }
+      .zpd-wrap      { padding-top: 0 !important; }
+      .zpd-hero-inner { flex-direction: column; gap: 2rem; }
+      .zpd-hero .zpd-doc-card { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Eduards Dričs</a>
+    <button class="nav-toggle" aria-label="Izvēlne" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li class="nav-item">
+        <a href="index.html#darbi">Darbi</a>
+        <div class="dropdown">
+          <a href="index.html#project-rastra"><span class="dropdown-num">01</span>Rastra grafika</a>
+          <a href="index.html#project-vektor"><span class="dropdown-num">02</span>Vektorgrafika</a>
+          <a href="index.html#project-3d"><span class="dropdown-num">03</span>3D Modelēšana</a>
+          <a href="index.html#project-office"><span class="dropdown-num">04</span>Excel &amp; Word</a>
+          <a href="index.html#project-prog"><span class="dropdown-num">05</span>Programmēšana</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="index.html#par-mani">Par mani</a>
+        <div class="dropdown">
+          <a href="index.html#par-mani"><span class="dropdown-num">01</span>Par mani</a>
+          <a href="index.html#prasmes"><span class="dropdown-num">02</span>Prasmes</a>
+        </div>
+      </li>
+      <li class="nav-item no-dd">
+        <a href="otrais.html">Individuālā tēma</a>
+      </li>
+      <li class="nav-item">
+        <a href="#">Papildus projekti</a>
+        <div class="dropdown">
+          <a href="forma.html"><span class="dropdown-num">01</span>Formas</a>
+          <a href="dzerdaudz.html"><span class="dropdown-num">02</span>Dzērieni (daudz)</a>
+          <a href="dzer.html"><span class="dropdown-num">03</span>Dzērieni</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- SECONDARY SUBNAV -->
+  <nav class="zpd-subnav" aria-label="Saturs">
+    <a href="#anotacija" class="zpd-subnav-link"><span>00</span>Anotācija</a>
+    <a href="#ievads"    class="zpd-subnav-link"><span>01</span>Ievads</a>
+    <a href="#kas-ir"    class="zpd-subnav-link"><span>02</span>Personas dati</a>
+    <a href="#uzraugi"   class="zpd-subnav-link"><span>03</span>Institūcijas</a>
+    <a href="#normas"    class="zpd-subnav-link"><span>04</span>Normas</a>
+    <a href="#aizsardziba" class="zpd-subnav-link"><span>05</span>Aizsardzība</a>
+    <a href="#secinajumi"  class="zpd-subnav-link"><span>06</span>Secinājumi</a>
+    <a href="#plakats"   class="zpd-subnav-link"><span>07</span>Plakāts</a>
+    <a href="#avoti"     class="zpd-subnav-link"><span>08</span>Avoti</a>
+  </nav>
+
+  <div class="zpd-wrap">
+  <main class="zpd-main">
+
+  <!-- ZPD HERO -->
+  <section id="tema" class="zpd-hero">
+    <div class="zpd-hero-inner">
+      <div class="zpd-hero-text">
+        <a href="index.html" class="back-btn">← Uz sākumlapu</a>
+        <p class="section-eyebrow" style="margin-top:1.8rem;">Zinātniskās pētniecības darbs</p>
+        <h1 class="zpd-hero-title">Personas<br>personīgo datu<br>aizsardzība</h1>
+      </div>
+      <div class="zpd-doc-card">
+        <div class="zpd-doc-row">
+          <span class="zpd-doc-value">Informāciju un tiesību zinātne</span>
+        </div>
+        <div class="zpd-doc-row">
+          <span class="zpd-doc-label">Autors</span>
+          <span class="zpd-doc-value">Eduards Dričs</span>
+        </div>
+        <div class="zpd-doc-row">
+          <span class="zpd-doc-label">Skola</span>
+          <span class="zpd-doc-value">Rīgas Valsts 1. ģimnāzija</span>
+        </div>
+        <div class="zpd-doc-row">
+          <span class="zpd-doc-label">Klase · Gads</span>
+          <span class="zpd-doc-value">10.f · 2025</span>
+        </div>
+        <a href="personigo_datu_aizsardziba.docx" download class="zpd-download">⬇ Lejuplādēt .docx</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 00 ANOTĀCIJA -->
+  <section id="anotacija" style="border-top:1px solid var(--line);">
+    <div class="page-section">
+      <div class="zpd-label">
+        <span class="zpd-label-num">00 / Anotācija</span>
+        <span class="zpd-label-line"></span>
+      </div>
+      <h2>Anotācija</h2>
+      <p>
+        Darbs skaidro, kas ir personas datu aizsardzība un kāpēc tā ir būtiska mūsdienu digitālajā vidē.
+        Tajā tiek analizēti galvenie GDPR principi un institūcijas, kas uzrauga datu apstrādes kārtību,
+        kā arī praktiskie drošības pasākumi, kas nodrošina personas datu konfidencialitāti un drošību.
+        Darbs parāda, kā tiek īstenota datu aizsardzība gan juridiskā, gan tehniskā līmenī un kādas
+        sekas var rasties, ja prasības netiek ievērotas.
+      </p>
+      <p>
+        <strong>Atslēgvārdi:</strong> personas dati, datu aizsardzība, GDPR, privātums, drošība, Datu valsts inspekcija.
+      </p>
+    </div>
+  </section>
+
+  <!-- 01 IEVADS -->
+  <section id="ievads" style="border-top:1px solid var(--line);">
+    <div class="page-section">
+      <div class="zpd-label">
+        <span class="zpd-label-num">01 / Ievads</span>
+        <span class="zpd-label-line"></span>
+      </div>
+      <h2>Ievads</h2>
+      <p>
+        Darba tēma "Personas personīgo datu aizsardzība" izvēlēta, lai noskaidrotu, kā tiek nodrošināta
+        cilvēku privāto datu drošība digitālajā vidē un kāpēc tā ir svarīga. Darba mērķis ir izpētīt,
+        kas ir personas dati, kādi ir to aizsardzības pamatprincipi un kādas institūcijas uzrauga datu
+        apstrādi Latvijā un Eiropas Savienībā. Pētījums balstās uz informācijas analīzi, izmantojot
+        uzticamus interneta avotus.
+      </p>
+    </div>
+  </section>
+
+  <!-- 02 KAS IR PERSONAS DATI -->
+  <section id="kas-ir" style="border-top:1px solid var(--line);">
+    <div class="page-section">
+      <div class="zpd-label">
+        <span class="zpd-label-num">02 / Kas ir personas dati</span>
+        <span class="zpd-label-line"></span>
+      </div>
+      <h2>Kas ir personas personīgie dati?</h2>
+      <p>
+        Personas dati ir jebkura informācija, kas attiecas uz identificētu vai identificējamu fizisku
+        personu, piemēram, vārds, adrese, e-pasts, personas kods u.c. Personas datu apstrāde drīkst
+        notikt tikai tad, ja pastāv tiesisks pamats, piemēram, piekrišana vai likumā noteikta prasība.
+      </p>
+      <p>
+        Eiropas Savienībā datu aizsardzību regulē Vispārīgā datu aizsardzības regula (GDPR), kas nosaka
+        pamatprincipus: likumīgums, caurskatāmība, nolūka ierobežojums, datu minimizēšana, precizitāte
+        un glabāšanas ierobežojums.
+      </p>
+    </div>
+  </section>
+
+  <!-- 03 UZRAUGOŠĀS INSTITŪCIJAS -->
+  <section id="uzraugi" style="border-top:1px solid var(--line);">
+    <div class="page-section">
+      <div class="zpd-label">
+        <span class="zpd-label-num">03 / Uzraugošās institūcijas</span>
+        <span class="zpd-label-line"></span>
+      </div>
+      <h2>Kas uzrauga personas datus Latvijā un Eiropā?</h2>
+      <p>
+        Latvijā par datu aizsardzības uzraudzību atbild Datu valsts inspekcija (DVI), kas izskata
+        sūdzības, sniedz konsultācijas un uzrauga, lai tiktu ievērotas datu aizsardzības prasības.
+      </p>
+      <p>
+        Eiropas līmenī darbojas Eiropas Datu aizsardzības padome (EDPB), kas publicē vadlīnijas un
+        rekomendācijas, lai vienoti piemērotu GDPR visās dalībvalstīs.
+      </p>
+      <p>
+        Praksē par GDPR pārkāpumiem uzņēmumiem tiek piemēroti ievērojami sodi. Piemēram, 2024. gadā
+        Eiropas uzraugi uzlika uzņēmumam Meta 251 miljonu eiro sodu par datu aizsardzības pārkāpumiem.
+      </p>
+    </div>
+  </section>
+
+  <!-- 04 GALVENĀS NORMAS -->
+  <section id="normas" style="border-top:1px solid var(--line);">
+    <div class="page-section">
+      <div class="zpd-label">
+        <span class="zpd-label-num">04 / Galvenās normas</span>
+        <span class="zpd-label-line"></span>
+      </div>
+      <h2>Galvenās normas personas datu aizsardzībā</h2>
+      <p>Vispārīgā datu aizsardzības regula (GDPR) paredz šādus pamatprincipus:</p>
+
+      <div class="gdpr-grid">
+        <div class="gdpr-card">
+          <p class="gdpr-card-title">Likumīgums, godprātība un caurskatāmība</p>
+          <p>Dati jāapstrādā tikai uz likumīga pamata, godīgi un saprotami.</p>
+        </div>
+        <div class="gdpr-card">
+          <p class="gdpr-card-title">Nolūka ierobežojums</p>
+          <p>Dati drīkst tikt vākti tikai konkrētiem, skaidriem mērķiem.</p>
+        </div>
+        <div class="gdpr-card">
+          <p class="gdpr-card-title">Datu minimizēšana</p>
+          <p>Drīkst apstrādāt tikai tik daudz datu, cik nepieciešams konkrētajam nolūkam.</p>
+        </div>
+        <div class="gdpr-card">
+          <p class="gdpr-card-title">Precizitāte</p>
+          <p>Dati jāuztur aktuāli un jālabo neprecīza informācija.</p>
+        </div>
+        <div class="gdpr-card">
+          <p class="gdpr-card-title">Glabāšanas ierobežojums</p>
+          <p>Personas datus nedrīkst glabāt ilgāk, nekā tas nepieciešams.</p>
+        </div>
+        <div class="gdpr-card">
+          <p class="gdpr-card-title">Integritāte un konfidencialitāte</p>
+          <p>Dati jāaizsargā pret nesankcionētu piekļuvi, noplūdi vai zudumu.</p>
+        </div>
+        <div class="gdpr-card">
+          <p class="gdpr-card-title">Atbildība</p>
+          <p>Datu pārzinim ir jāpierāda, ka viņš ievēro visus GDPR principus un normas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 KĀ TIEK AIZSARGĀTI DATI -->
+  <section id="aizsardziba" style="border-top:1px solid var(--line);">
+    <div class="page-section">
+      <div class="zpd-label">
+        <span class="zpd-label-num">05 / Aizsardzības līmeņi</span>
+        <span class="zpd-label-line"></span>
+      </div>
+      <h2>Kā tiek aizsargāti personas dati</h2>
+      <p>Personas datu aizsardzība notiek vairākos līmeņos – gan juridiskā, gan tehniskā, gan organizatoriskā.</p>
+
+      <div class="zpd-sub">
+        <h3>5.1. Juridiskais regulējums</h3>
+        <p>
+          Eiropas Savienībā galvenais normatīvais akts ir Vispārīgā datu aizsardzības regula (GDPR).
+          Tā nosaka, kādos gadījumos un ar kādiem nosacījumiem drīkst apstrādāt personas datus.
+        </p>
+      </div>
+
+      <div class="zpd-sub">
+        <h3>5.2. Uzraugošās institūcijas</h3>
+        <p>
+          Latvijā datu aizsardzību kontrolē Datu valsts inspekcija, kas uzrauga normu ievērošanu,
+          izvērtē sūdzības un piemēro sankcijas, ja konstatēti pārkāpumi.
+        </p>
+      </div>
+
+      <div class="zpd-sub">
+        <h3>5.3. Organizatoriskie pasākumi</h3>
+        <p>
+          Uzņēmumiem un iestādēm jāievieš iekšējās kārtības, piemēram, jāierobežo piekļuve datiem
+          tikai tiem darbiniekiem, kuriem tas ir nepieciešams, jāveic regulāras darbinieku apmācības.
+        </p>
+      </div>
+
+      <div class="zpd-sub">
+        <h3>5.4. Tehniskie pasākumi</h3>
+        <p>
+          Datu aizsardzībai izmanto paroles, šifrēšanu, ugunsmūrus, datu rezerves kopijas un drošus
+          serverus. Tas palīdz novērst nesankcionētu piekļuvi vai datu noplūdi.
+        </p>
+      </div>
+
+      <div class="zpd-sub">
+        <h3>5.5. Atbildība un sodi</h3>
+        <p>
+          Par pārkāpumiem uzraugošās iestādes var piemērot brīdinājumus vai pat milzīgus naudas sodus,
+          kas stimulē uzņēmumus atbildīgi apieties ar datiem.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 SECINĀJUMI -->
+  <section id="secinajumi" style="border-top:1px solid var(--line);">
+    <div class="page-section">
+      <div class="zpd-label">
+        <span class="zpd-label-num">06 / Secinājumi</span>
+        <span class="zpd-label-line"></span>
+      </div>
+      <h2>Secinājumi</h2>
+      <ul>
+        <li>Personas dati ir jebkura informācija, pēc kuras cilvēku var identificēt, tāpēc to aizsardzība ir būtiska privātuma nodrošināšanai digitālajā vidē.</li>
+        <li>Vispārīgā datu aizsardzības regula (GDPR) nosaka skaidrus datu apstrādes principus — likumīgumu, datu minimizēšanu, caurskatāmību un glabāšanas ierobežojumu, kas palīdz pasargāt cilvēku tiesības.</li>
+        <li>Latvijā datu apstrādes uzraudzību nodrošina Datu valsts inspekcija, kas kontrolē, lai organizācijas ievērotu noteikumus un godprātīgi rīkotos ar personas datiem.</li>
+        <li>Personas datu aizsardzība balstās ne tikai juridiskos, bet arī tehniskos un organizatoriskos pasākumos, piemēram, piekļuves ierobežošanā, šifrēšanā un darbinieku apmācībās.</li>
+        <li>Par datu aizsardzības prasību pārkāpumiem organizācijām var tikt piemēroti ievērojami naudas sodi, kas motivē uzņēmumus atbildīgi pārvaldīt personas datus.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 07 PLAKĀTS -->
+  <section id="plakats" style="border-top:1px solid var(--line);">
+    <div class="page-section">
+      <div class="zpd-label">
+        <span class="zpd-label-num">07 / Plakāts</span>
+        <span class="zpd-label-line"></span>
+      </div>
+      <h2>Plakāts</h2>
+      <div style="border:1.5px dashed var(--line);border-radius:4px;padding:3rem;text-align:center;color:var(--ink-soft);font-size:0.82rem;letter-spacing:0.06em;margin-top:1rem;">
+        <span style="display:block;font-size:2rem;margin-bottom:0.8rem;opacity:0.3;">▭</span>
+        Plakāts tiks pievienots
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 AVOTI -->
+  <section id="avoti" style="border-top:2px solid var(--line);">
+    <div class="page-section">
+      <div class="zpd-label">
+        <span class="zpd-label-num">08 / Avoti</span>
+        <span class="zpd-label-line"></span>
+      </div>
+      <h2>Informācijas avoti</h2>
+      <ol class="avoti-list">
+        <li>
+          Edīte Brikmane. (2018). <em>Kas ir personas dati? Vispārīgā datu aizsardzības regula.</em><br>
+          <a href="https://lvportals.lv/skaidrojumi/294871-kas-ir-personas-dati-vispariga-datu-aizsardzibas-regula-i-2018" target="_blank" rel="noopener">
+            lvportals.lv — Kas ir personas dati?
+          </a>
+        </li>
+        <li>
+          Birkmane, E. (2018). <em>Personas datu apstrādes principi. Vispārīgā datu aizsardzības regula.</em><br>
+          <a href="https://lvportals.lv/skaidrojumi/295244-personas-datu-apstrades-principi-vispariga-datu-aizsardzibas-regula-iii-2018" target="_blank" rel="noopener">
+            lvportals.lv — Personas datu apstrādes principi
+          </a>
+        </li>
+        <li>
+          Datu valsts inspekcija. (2022). <em>Kas ir un kā ziņot par personas datu aizsardzības pārkāpumu.</em><br>
+          <a href="https://www.dvi.gov.lv/lv/jaunums/dviskaidro-14102022" target="_blank" rel="noopener">
+            dvi.gov.lv — Kas ir un kā ziņot par datu pārkāpumu
+          </a>
+        </li>
+        <li>
+          European Data Protection Board. <em>Guidelines, Recommendations, Best Practices.</em><br>
+          <a href="https://www.edpb.europa.eu/our-work-tools/general-guidance/guidelines-recommendations-best-practices_en" target="_blank" rel="noopener">
+            edpb.europa.eu — Guidelines &amp; Recommendations
+          </a>
+        </li>
+        <li>
+          Reuters. (2024, December 17). <em>EU privacy regulator fines Meta 251 million euros for 2018 breach.</em><br>
+          <a href="https://www.reuters.com/technology/eu-privacy-regulator-fines-meta-251-million-euros-2024-12-17/" target="_blank" rel="noopener">
+            reuters.com — EU fines Meta 251 million euros
+          </a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  </main><!-- zpd-main -->
+  </div><!-- zpd-wrap -->
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-left">Eduards Dričs</span>
+    <span class="footer-right">Datorikas portfolio · 2025 / 2026</span>
+  </footer>
+
+  <script>
+    (function() {
+      // ── Main nav: hamburger + dropdowns ──
+      var nav = document.querySelector('nav');
+      var navItems = document.querySelectorAll('.nav-item');
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.querySelector('.nav-links');
+
+      function closeAll(except) {
+        navItems.forEach(function(i) { if (i !== except) i.classList.remove('open'); });
+      }
+
+      if (navToggle) {
+        navToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var open = navLinks.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', open);
+          if (!open) closeAll();
+        });
+      }
+
+      navItems.forEach(function(item) {
+        var trigger = item.querySelector(':scope > a');
+        var dd = item.querySelector(':scope > .dropdown');
+        if (!trigger || !dd) return;
+        trigger.addEventListener('click', function(e) {
+          if (!window.matchMedia('(max-width:768px)').matches) return;
+          e.preventDefault();
+          var willOpen = !item.classList.contains('open');
+          closeAll(willOpen ? item : null);
+          item.classList.toggle('open', willOpen);
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!window.matchMedia('(max-width:768px)').matches) return;
+        if (nav && nav.contains(e.target)) return;
+        closeAll();
+        navLinks && navLinks.classList.remove('open');
+      });
+
+      document.querySelectorAll('.dropdown a').forEach(function(a) {
+        a.addEventListener('click', function() { closeAll(); });
+      });
+
+      // ── Subnav: pozicionē tieši zem galvenā nav ──
+      var mainNavEl = document.querySelector('nav');
+      var subnavEl  = document.querySelector('.zpd-subnav');
+      var wrapEl    = document.querySelector('.zpd-wrap');
+
+      function reposition() {
+        if (window.matchMedia('(max-width:768px)').matches) return;
+        var navH    = mainNavEl.offsetHeight;
+        var subnavH = subnavEl.offsetHeight;
+        subnavEl.style.top      = navH + 'px';
+        wrapEl.style.paddingTop = (navH + subnavH) + 'px';
+      }
+
+      reposition();
+      window.addEventListener('resize', reposition);
+
+      // ── Subnav: highlight active section ──
+      var subLinks = document.querySelectorAll('.zpd-subnav-link');
+      var sections = [];
+      subLinks.forEach(function(link) {
+        var id = link.getAttribute('href').replace('#', '');
+        var el = document.getElementById(id);
+        if (el) sections.push({ el: el, link: link });
+      });
+
+      function onScroll() {
+        var navH    = mainNavEl.offsetHeight;
+        var subnavH = subnavEl.offsetHeight;
+        var scrollY = window.scrollY + navH + subnavH + 8;
+        var active  = null;
+        sections.forEach(function(s) {
+          if (s.el.offsetTop <= scrollY) active = s;
+        });
+        subLinks.forEach(function(l) { l.classList.remove('active'); });
+        if (active) active.link.classList.add('active');
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formas — Eduards Dričs</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="CSS/mansStils.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Eduards Dričs</a>
+    <button class="nav-toggle" aria-label="Izvēlne" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li class="nav-item">
+        <a href="index.html#darbi">Darbi</a>
+        <div class="dropdown">
+          <a href="index.html#project-rastra"><span class="dropdown-num">01</span>Rastra grafika</a>
+          <a href="index.html#project-vektor"><span class="dropdown-num">02</span>Vektorgrafika</a>
+          <a href="index.html#project-3d"><span class="dropdown-num">03</span>3D Modelēšana</a>
+          <a href="index.html#project-office"><span class="dropdown-num">04</span>Excel &amp; Word</a>
+          <a href="index.html#project-prog"><span class="dropdown-num">05</span>Programmēšana</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="index.html#par-mani">Par mani</a>
+        <div class="dropdown">
+          <a href="index.html#par-mani"><span class="dropdown-num">01</span>Par mani</a>
+          <a href="index.html#prasmes"><span class="dropdown-num">02</span>Prasmes</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="otrais.html">Individuālā tēma</a>
+        <div class="dropdown">
+          <a href="otrais.html"><span class="dropdown-num">01</span>Darbs</a>
+          <a href="otrais.html#avoti"><span class="dropdown-num">02</span>Avoti</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Papildus projekti</a>
+        <div class="dropdown">
+          <a href="forma.html"><span class="dropdown-num">01</span>Formas</a>
+          <a href="dzerdaudz.html"><span class="dropdown-num">02</span>Dzērieni (daudz)</a>
+          <a href="dzer.html"><span class="dropdown-num">03</span>Dzērieni</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="page-content">
+    <div class="form-section">
+
+      <a href="index.html" class="back-btn">← Uz sākumlapu</a>
+
+      <h1>Formas</h1>
+      <p>Datuma un aprēķinu formas ar JavaScript.</p>
+
+      <!-- DATUMA FORMA -->
+      <h2>Datuma forma</h2>
+      <form>
+        <p>Šodienas datums <input name="datums"></p>
+        <p>Ja gribi uzzināt šodienas datumu, spied pogu DATUMS
+          <input onclick="datums.value=new Date();" name="poga" value="DATUMS" type="button">
+        </p>
+        <p>Ja gribi izdzēst datuma lodziņa saturu, spied pogu NOTĪRĪT
+          <input value="NOTĪRĪT" type="reset">
+        </p>
+      </form>
+
+      <!-- APRĒĶINU FORMA -->
+      <h2>Aprēķinu forma</h2>
+      <form>
+        <div>1. skaitlis <input type="text" name="sk1"></div>
+        <br>
+        <div>2. skaitlis <input type="text" name="sk2"></div>
+        <br>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.8rem;">
+          <input value="+" onclick="rez.value=Number(sk1.value)+Number(sk2.value)" type="button">
+          <input value="-" onclick="rez.value=Number(sk1.value)-Number(sk2.value)" type="button">
+          <input value="X" name="reiz" onclick="rez.value=sk1.value*sk2.value" type="button">
+          <input value="÷" onclick="rez.value=sk2.value!=0?Number(sk1.value)/Number(sk2.value):'Kļūda: dalīšana ar 0'" type="button">
+          <input value="NOTĪRĪT" type="reset">
+        </div>
+        <hr style="border:none;border-top:1px solid var(--line);margin:0.5rem 0;">
+        <div>Rezultāts <input name="rez"></div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-left">Eduards Dričs</span>
+    <span class="footer-right">Datorikas portfolio · 2025 / 2026</span>
+  </footer>
+
+  <script>
+    (function() {
+      var nav = document.querySelector('nav');
+      var navItems = document.querySelectorAll('.nav-item');
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.querySelector('.nav-links');
+
+      function closeAll(except) {
+        navItems.forEach(function(i) { if (i !== except) i.classList.remove('open'); });
+      }
+
+      if (navToggle) {
+        navToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var open = navLinks.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', open);
+          if (!open) closeAll();
+        });
+      }
+
+      navItems.forEach(function(item) {
+        var trigger = item.querySelector(':scope > a');
+        var dd = item.querySelector(':scope > .dropdown');
+        if (!trigger || !dd) return;
+        trigger.addEventListener('click', function(e) {
+          if (!window.matchMedia('(max-width:768px)').matches) return;
+          e.preventDefault();
+          var willOpen = !item.classList.contains('open');
+          closeAll(willOpen ? item : null);
+          item.classList.toggle('open', willOpen);
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!window.matchMedia('(max-width:768px)').matches) return;
+        if (nav && nav.contains(e.target)) return;
+        closeAll();
+        navLinks && navLinks.classList.remove('open');
+      });
+
+      document.querySelectorAll('.dropdown a').forEach(function(a) {
+        a.addEventListener('click', function() { closeAll(); });
+      });
+    })();
+  </script>
+
+</body>
+</html>

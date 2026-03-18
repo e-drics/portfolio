@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dzērieni — Eduards Dričs</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="CSS/mansStils.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Eduards Dričs</a>
+    <button class="nav-toggle" aria-label="Izvēlne" aria-expanded="false">☰</button>
+    <ul class="nav-links">
+      <li class="nav-item">
+        <a href="index.html#darbi">Darbi</a>
+        <div class="dropdown">
+          <a href="index.html#project-rastra"><span class="dropdown-num">01</span>Rastra grafika</a>
+          <a href="index.html#project-vektor"><span class="dropdown-num">02</span>Vektorgrafika</a>
+          <a href="index.html#project-3d"><span class="dropdown-num">03</span>3D Modelēšana</a>
+          <a href="index.html#project-office"><span class="dropdown-num">04</span>Excel &amp; Word</a>
+          <a href="index.html#project-prog"><span class="dropdown-num">05</span>Programmēšana</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="index.html#par-mani">Par mani</a>
+        <div class="dropdown">
+          <a href="index.html#par-mani"><span class="dropdown-num">01</span>Par mani</a>
+          <a href="index.html#prasmes"><span class="dropdown-num">02</span>Prasmes</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="otrais.html">Individuālā tēma</a>
+        <div class="dropdown">
+          <a href="otrais.html"><span class="dropdown-num">01</span>Darbs</a>
+          <a href="otrais.html#avoti"><span class="dropdown-num">02</span>Avoti</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#">Papildus projekti</a>
+        <div class="dropdown">
+          <a href="forma.html"><span class="dropdown-num">01</span>Formas</a>
+          <a href="dzerdaudz.html"><span class="dropdown-num">02</span>Dzērieni (daudz)</a>
+          <a href="dzer.html"><span class="dropdown-num">03</span>Dzērieni</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="page-content">
+    <div class="dzer-section">
+
+      <a href="index.html" class="back-btn">← Uz sākumlapu</a>
+
+      <h1 class="dzer-title">Dzērieni (vairāki)</h1>
+      <p>Izvēlies vienu vai vairākus dzērienus un apskatī kopējo summu.</p>
+
+      <div class="dzer-form">
+        <div class="dzer-item">
+          <input type="checkbox" id="kafija" name="kafija" value="3.60">
+          <label for="kafija">Kafija — 3.60 €</label>
+        </div>
+        <div class="dzer-item">
+          <input type="checkbox" id="sula" name="sula" value="2.50">
+          <label for="sula">Sula — 2.50 €</label>
+        </div>
+        <div class="dzer-item">
+          <input type="checkbox" id="kakao" name="kakao" value="3.20">
+          <label for="kakao">Kakao — 3.20 €</label>
+        </div>
+        <div class="dzer-item">
+          <input type="checkbox" id="teja" name="teja" value="2.00">
+          <label for="teja">Teja — 2.00 €</label>
+        </div>
+
+        <div style="margin-top:1.2rem;">
+          <input type="button" value="Aprēķināt" onclick="maksa()">
+        </div>
+
+        <div class="dzer-result">
+          <p id="maksa"></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-left">Eduards Dričs</span>
+    <span class="footer-right">Datorikas portfolio · 2025 / 2026</span>
+  </footer>
+
+  <script>
+    function maksa() {
+      var dz = document.getElementsByTagName('input');
+      var sum = 0;
+      for (var i = 0; i < dz.length - 1; i++) {
+        if (dz[i].checked) sum += Number(dz[i].value);
+      }
+      document.getElementById('maksa').innerHTML = 'Jāmaksā: <strong>' + sum.toFixed(2) + ' €</strong>';
+    }
+
+    (function() {
+      var nav = document.querySelector('nav');
+      var navItems = document.querySelectorAll('.nav-item');
+      var navToggle = document.querySelector('.nav-toggle');
+      var navLinks = document.querySelector('.nav-links');
+
+      function closeAll(except) {
+        navItems.forEach(function(i) { if (i !== except) i.classList.remove('open'); });
+      }
+
+      if (navToggle) {
+        navToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var open = navLinks.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', open);
+          if (!open) closeAll();
+        });
+      }
+
+      navItems.forEach(function(item) {
+        var trigger = item.querySelector(':scope > a');
+        var dd = item.querySelector(':scope > .dropdown');
+        if (!trigger || !dd) return;
+        trigger.addEventListener('click', function(e) {
+          if (!window.matchMedia('(max-width:768px)').matches) return;
+          e.preventDefault();
+          var willOpen = !item.classList.contains('open');
+          closeAll(willOpen ? item : null);
+          item.classList.toggle('open', willOpen);
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!window.matchMedia('(max-width:768px)').matches) return;
+        if (nav && nav.contains(e.target)) return;
+        closeAll();
+        navLinks && navLinks.classList.remove('open');
+      });
+
+      document.querySelectorAll('.dropdown a').forEach(function(a) {
+        a.addEventListener('click', function() { closeAll(); });
+      });
+    })();
+  </script>
+
+</body>
+</html>
