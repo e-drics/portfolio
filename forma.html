@@ -64,7 +64,7 @@
       <form>
         <p>Šodienas datums <input name="datums"></p>
         <p>Ja gribi uzzināt šodienas datumu, spied pogu DATUMS
-          <input onclick="datums.value=new Date();" name="poga" value="DATUMS" type="button">
+          <input onclick="var d=new Date();datums.value=String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear();" name="poga" value="DATUMS" type="button">
         </p>
         <p>Ja gribi izdzēst datuma lodziņa saturu, spied pogu NOTĪRĪT
           <input value="NOTĪRĪT" type="reset">
