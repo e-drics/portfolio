@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="lv">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Eduards Dričs — Portfolio</title>
   <link rel="icon" type="image/png" href="mazslogo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
   <link rel="stylesheet" href="CSS/mansStils.css" />
   <style>
@@ -19,9 +22,15 @@
       --tag-bg: #ede9e3;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--bg);
@@ -32,7 +41,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE TEXTURE OVERLAY ── */
+
     body::before {
       content: '';
       position: fixed;
@@ -42,10 +51,12 @@
       z-index: 1000;
     }
 
-    /* ── NAV ── */
+
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
@@ -79,28 +90,35 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
-    /* ── DROPDOWN ── */
-    .nav-item { position: relative; }
 
-    .nav-item > a {
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item>a {
       display: flex;
       align-items: center;
       gap: 0.35rem;
     }
 
-    .nav-item > a::after {
+    .nav-item>a::after {
       content: '▾';
       font-size: 0.6rem;
       transition: transform 0.25s ease;
       display: inline-block;
     }
 
-    .nav-item:hover > a::after { transform: rotate(180deg); }
+    .nav-item:hover>a::after {
+      transform: rotate(180deg);
+    }
 
-    /* Tap-to-toggle support (mobile) */
-    .nav-item.open > a::after { transform: rotate(180deg); }
+    .nav-item.open>a::after {
+      transform: rotate(180deg);
+    }
 
     .dropdown {
       position: absolute;
@@ -111,7 +129,7 @@
       border: 1px solid var(--line);
       min-width: 200px;
       padding: 0.5rem 0;
-      box-shadow: 0 12px 32px rgba(28,26,23,0.10);
+      box-shadow: 0 12px 32px rgba(28, 26, 23, 0.10);
       opacity: 0;
       visibility: hidden;
       transform: translateX(-50%) translateY(-6px);
@@ -131,13 +149,15 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* arrow tip */
+
     .dropdown::before {
       content: '';
       position: absolute;
-      top: -5px; left: 50%;
+      top: -5px;
+      left: 50%;
       transform: translateX(-50%) rotate(45deg);
-      width: 9px; height: 9px;
+      width: 9px;
+      height: 9px;
       background: var(--card-bg);
       border-top: 1px solid var(--line);
       border-left: 1px solid var(--line);
@@ -169,7 +189,7 @@
       min-width: 18px;
     }
 
-    /* ── HERO ── */
+
     .hero {
       min-height: 80vh;
       display: flex;
@@ -229,17 +249,19 @@
       animation: fadeUp 0.8s 0.65s ease forwards;
     }
 
-    /* ── SECTION BASE ── */
+
     section {
       padding: 6rem 3rem;
       position: relative;
     }
 
-    /* Smooth lines between sections */
+
     section::before {
       content: '';
       position: absolute;
-      top: 0; left: 10%; right: 10%;
+      top: 0;
+      left: 10%;
+      right: 10%;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--line), transparent);
       opacity: 0;
@@ -337,7 +359,7 @@
       text-transform: uppercase;
     }
 
-    /* ── PROJECTS ── */
+
     #darbi {
       border-top: 1px solid var(--line);
     }
@@ -366,17 +388,22 @@
     .project-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 0;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
       background: var(--accent);
       transition: height 0.4s ease;
       z-index: 1;
     }
 
-    .project-card:hover::before { height: 100%; }
+    .project-card:hover::before {
+      height: 100%;
+    }
+
     .project-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(28,26,23,0.08);
+      box-shadow: 0 16px 40px rgba(28, 26, 23, 0.08);
     }
 
     .project-content {
@@ -454,7 +481,7 @@
       opacity: 0.4;
     }
 
-    /* ── ABOUT ── */
+
     #par-mani {
       border-top: 1px solid var(--line);
       background: var(--card-bg);
@@ -501,17 +528,32 @@
       animation: fadeInFromLeft 0.6s ease forwards;
     }
 
-    .skill-row:nth-child(1) { animation-delay: 0.1s; }
-    .skill-row:nth-child(2) { animation-delay: 0.2s; }
-    .skill-row:nth-child(3) { animation-delay: 0.3s; }
-    .skill-row:nth-child(4) { animation-delay: 0.4s; }
-    .skill-row:nth-child(5) { animation-delay: 0.5s; }
+    .skill-row:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    .skill-row:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .skill-row:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .skill-row:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    .skill-row:nth-child(5) {
+      animation-delay: 0.5s;
+    }
 
     @keyframes fadeInFromLeft {
       from {
         opacity: 0;
         transform: translateX(-30px);
       }
+
       to {
         opacity: 1;
         transform: translateX(0);
@@ -563,7 +605,6 @@
       line-height: 1.6;
     }
 
-    /* ── TIMELINE / YEAR ── */
     .year-strip {
       border-top: 1px solid var(--line);
       padding: 2rem 3rem;
@@ -585,7 +626,8 @@
     }
 
     .year-dot {
-      width: 8px; height: 8px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--accent);
       flex-shrink: 0;
@@ -607,7 +649,7 @@
       flex-shrink: 0;
     }
 
-    /* ── FOOTER ── */
+
     footer {
       border-top: 1px solid var(--line);
       padding: 2.5rem 3rem;
@@ -629,23 +671,40 @@
       color: var(--ink-soft);
     }
 
-    /* ── ANIMATIONS ── */
+
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     @keyframes barFill {
-      from { transform: scaleX(0); }
-      to   { transform: scaleX(1); }
+      from {
+        transform: scaleX(0);
+      }
+
+      to {
+        transform: scaleX(1);
+      }
     }
 
-    /* Scroll reveal */
+
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -657,7 +716,7 @@
       transform: translateY(0);
     }
 
-    /* ── HAMBURGER BUTTON ── */
+
     .nav-toggle {
       display: none;
       background: none;
@@ -670,44 +729,122 @@
       line-height: 1;
     }
 
-    /* ── RESPONSIVE ── */
+
     @media (max-width: 768px) {
-      nav { padding: 1rem 1.5rem; position: relative; flex-wrap: wrap; }
-      .nav-toggle { display: block; }
-      .nav-links { display: none; flex-direction: column; width: 100%; gap: 0; padding: 0.5rem 0 1rem; }
-      .nav-links.open { display: flex; }
-      .nav-links > li { border-bottom: 1px solid var(--line); }
-      .nav-item > a { padding: 0.6rem 0; font-size: 0.75rem; }
-      .nav-item > a::after { display: none; }
-      .dropdown { position: static; opacity: 1; visibility: hidden; transform: none !important; box-shadow: none; border: none; border-left: 2px solid var(--line); background: var(--tag-bg); padding: 0; max-height: 0; overflow: hidden; transition: max-height 0.28s ease; }
-      .dropdown::before { display: none; }
-      .nav-item.open .dropdown { visibility: visible; max-height: 400px; padding: 0.3rem 0 0.5rem 0.5rem; opacity: 1 !important; }
-      .nav-item:not(.open) .dropdown { opacity: 0 !important; visibility: hidden !important; max-height: 0 !important; padding: 0 !important; }
+      nav {
+        padding: 1rem 1.5rem;
+        position: relative;
+        flex-wrap: wrap;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        padding: 0.5rem 0 1rem;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links>li {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-item>a {
+        padding: 0.6rem 0;
+        font-size: 0.75rem;
+      }
+
+      .nav-item>a::after {
+        display: none;
+      }
+
+      .dropdown {
+        position: static;
+        opacity: 1;
+        visibility: hidden;
+        transform: none !important;
+        box-shadow: none;
+        border: none;
+        border-left: 2px solid var(--line);
+        background: var(--tag-bg);
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.28s ease;
+      }
+
+      .dropdown::before {
+        display: none;
+      }
+
+      .nav-item.open .dropdown {
+        visibility: visible;
+        max-height: 400px;
+        padding: 0.3rem 0 0.5rem 0.5rem;
+        opacity: 1 !important;
+      }
+
+      .nav-item:not(.open) .dropdown {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        max-height: 0 !important;
+        padding: 0 !important;
+      }
 
       .hero {
         grid-template-columns: 1fr;
         gap: 0;
         padding-top: 80px;
       }
-      .hero-left { padding: 4rem 1.5rem 2rem; }
 
-      section { padding: 4rem 1.5rem; }
+      .hero-left {
+        padding: 4rem 1.5rem 2rem;
+      }
+
+      section {
+        padding: 4rem 1.5rem;
+      }
 
       .project-card {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
 
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-intro-grid { grid-template-columns: 1fr; gap: 1.75rem; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-      .year-strip { padding: 1.5rem; margin: 0; }
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+
+      .year-strip {
+        padding: 1.5rem;
+        margin: 0;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- NAV -->
+
   <nav>
     <a class="nav-logo" href="#">Eduards Dričs</a>
     <button class="nav-toggle" aria-label="Izvēlne" aria-expanded="false">☰</button>
@@ -747,20 +884,20 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
+
   <header class="hero">
     <div class="hero-left">
       <p class="hero-eyebrow">Datorika 2025 / 2026</p>
       <h1 class="hero-name">Eduards<br /><em>Dričs</em></h1>
       <p class="hero-subtitle">Skolēns · Rīgas Valsts 1. Ģimnāzija</p>
       <p class="hero-desc">
-        Šis ir mans portfolio, kurā apkopoti projekti un stundu darbi, ko apguvām šajā mācību gadā. 
+        Šis ir mans portfolio, kurā apkopoti projekti un stundu darbi, ko apguvām šajā mācību gadā.
         Tāpat šī mājaslapa kalpo kā programmēšanas valodas HTML un CSS noslēguma darbs.
       </p>
     </div>
   </header>
 
-  <!-- PROJECTS -->
+
   <section id="darbi">
     <div class="section-header" style="margin-top: 8rem;">
       <span class="section-num">01 / Darbi</span>
@@ -768,7 +905,7 @@
       <div class="section-line"></div>
     </div>
 
-    <!-- YEAR STRIP (moved below title) -->
+
     <div class="year-strip">
       <div class="year-item">
         <span class="year-dot"></span>
@@ -798,14 +935,16 @@
 
     <div class="projects-grid">
 
-      <!-- 01 Rastra grafika -->
+
       <div id="project-rastra" class="project-card reveal">
         <div class="project-content">
           <p class="project-index">01</p>
           <h3 class="project-title">Rastra grafika</h3>
           <p class="project-desc">
-            Pirmā datorikas šī gada tēma bija rastra grafika. Šīs tēmas ietvaros mēs aplūkojām rastra grafikas pamatus, izmantojot programmu <em>Gimp</em>.
-            Noslēdzot tēmu, mēs izveidojām animāciju atbilstoši mums iedalītai tēmai, tādā veidā pielietojot un nostiprinot mūsu iegūtās zināšanas par rastra grafiku.
+            Pirmā datorikas šī gada tēma bija rastra grafika. Šīs tēmas ietvaros mēs aplūkojām rastra grafikas pamatus,
+            izmantojot programmu <em>Gimp</em>.
+            Noslēdzot tēmu, mēs izveidojām animāciju atbilstoši mums iedalītai tēmai, tādā veidā pielietojot un
+            nostiprinot mūsu iegūtās zināšanas par rastra grafiku.
           </p>
           <div class="project-tags">
             <span class="tag">Rastra grafika</span>
@@ -818,15 +957,19 @@
         </div>
       </div>
 
-    
+
       <div id="project-vektor" class="project-card reveal">
         <div class="project-content">
           <p class="project-index">02</p>
           <h3 class="project-title">Vektorgrafiks</h3>
           <p class="project-desc">
-            Pēc rastra grafikas mēs apguvām vektorgrafiku. Iepazināmies ar atšķirībām, kādas ir starp rastra un vektorgrafiku, 
-            kā arī iepazināmies ar nozarēm, kurās izmanto katru no dizaina veidošanas veidiem. Šīs tēmas projekts bija izveidot atbilstošu logo uzņēmumam, kura apraksts mums tika iedalīts, izmantojot datorprogrammu <em>Inkscape</em> . 
-            Tāpat mums bija jāsniedz pamatojums, kādēļ izvēlējāmies noteiktu dizainu un kā tas atbilst uzņēmuma būtībai un vajadzībām.
+            Pēc rastra grafikas mēs apguvām vektorgrafiku. Iepazināmies ar atšķirībām, kādas ir starp rastra un
+            vektorgrafiku,
+            kā arī iepazināmies ar nozarēm, kurās izmanto katru no dizaina veidošanas veidiem. Šīs tēmas projekts bija
+            izveidot atbilstošu logo uzņēmumam, kura apraksts mums tika iedalīts, izmantojot datorprogrammu
+            <em>Inkscape</em> .
+            Tāpat mums bija jāsniedz pamatojums, kādēļ izvēlējāmies noteiktu dizainu un kā tas atbilst uzņēmuma būtībai
+            un vajadzībām.
           </p>
           <div class="project-tags">
             <span class="tag">Inkscaped</span>
@@ -839,16 +982,18 @@
         </div>
       </div>
 
-      <!-- 03 3D modelēšana -->
+
       <div id="project-3d" class="project-card reveal">
         <div class="project-content">
           <p class="project-index">03</p>
           <h3 class="project-title">3D Modelēšana</h3>
           <p class="project-desc">
             Šajā tēmā apguvām 3D modelēšanas pamatus, izmantojot tīmekļa rīku <em>Tinkercad</em>.
-            Kā projekta darbu mums vajadzēja izveidot kubiņu, kas ir saliekams kā puzle, un uz kura katras malas ir attēlots iepriekšējās tēmas ietvaros citas grupas izveidotais logo.
+            Kā projekta darbu mums vajadzēja izveidot kubiņu, kas ir saliekams kā puzle, un uz kura katras malas ir
+            attēlots iepriekšējās tēmas ietvaros citas grupas izveidotais logo.
             Pēc tam kubiņu vajadzēja izdrukāt ar 3D printeri un parādīt skolotājai gatavo produktu.
-            Tēmas noslēgumā izveidojām arī īsu filmiņu par visu modelēšanas un drukāšanas procesu. Atbilstoši uzdevumam filmiņas izveidē varējām izmantot jebkuru video rediģēšanas programmu. 
+            Tēmas noslēgumā izveidojām arī īsu filmiņu par visu modelēšanas un drukāšanas procesu. Atbilstoši uzdevumam
+            filmiņas izveidē varējām izmantot jebkuru video rediģēšanas programmu.
             Es izmantoju plaši zināmo programmu <em>Davinci Resolve</em>.
           </p>
           <div class="project-tags">
@@ -864,14 +1009,16 @@
         </div>
       </div>
 
-      <!-- 04 Excel & Word -->
+
       <div id="project-office" class="project-card reveal">
         <div class="project-content">
           <p class="project-index">04</p>
           <h3 class="project-title">Excel & Word</h3>
           <p class="project-desc">
-            Šīs tēmas ietvaros mācījāmies kā Microsoft programmā Word pareizi noformēt dokumentu, lai tas atbilstu ZPD formātam.
-            Pēc tam Excel programmā apguvām, kā ātri un efektīvi sakārtot datus tabulās, izmantot formulas, veikt aprēķinus un attēlot rezultātus diagrammās.
+            Šīs tēmas ietvaros mācījāmies kā Microsoft programmā Word pareizi noformēt dokumentu, lai tas atbilstu ZPD
+            formātam.
+            Pēc tam Excel programmā apguvām, kā ātri un efektīvi sakārtot datus tabulās, izmantot formulas, veikt
+            aprēķinus un attēlot rezultātus diagrammās.
             Šīs prasmes mums noderēs laboratorijas darbu protokolu izveidē.
           </p>
           <div class="project-tags">
@@ -880,25 +1027,27 @@
             <span class="tag">Formulas</span>
             <span class="tag">Diagrammas</span>
           </div>
-          <a href="excelKD2026-1.xlsx" download style="display:inline-block;margin-top:1rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:0.4rem 0.9rem;border-radius:2px;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--accent)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">⬇ Lejuplādēt aprēķini.xlsx</a>
+          <a href="excelKD2026-1.xlsx" download
+            style="display:inline-block;margin-top:1rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:0.4rem 0.9rem;border-radius:2px;transition:background 0.2s,color 0.2s;"
+            onmouseover="this.style.background='var(--accent)';this.style.color='#fff'"
+            onmouseout="this.style.background='transparent';this.style.color='var(--accent)'">⬇ Lejuplādēt
+            aprēķini.xlsx</a>
         </div>
         <div class="project-image">
-          <img
-            src="images/word.jpg.webp"
-            alt="Excel un Word"
-            style="width: 100%; max-width: 280px; border-radius: 4px; background: var(--line); display: block;"
-          />
+          <img src="images/word.jpg.webp" alt="Excel un Word"
+            style="width: 100%; max-width: 280px; border-radius: 4px; background: var(--line); display: block;" />
         </div>
       </div>
 
-      <!-- 05 Programmēšana -->
+
       <div id="project-prog" class="project-card reveal">
         <div class="project-content">
           <p class="project-index">05</p>
           <h3 class="project-title">Programmēšana</h3>
           <p class="project-desc">
             Šajā tēmā apguvām programmēšanas valodu HTML un CSS pamatus — kā veidot mājaslapas struktūru un noformējumu.
-            Nedaudz iepazināmies arī ar Git programmu, kā arī iemācījāmies publicēt mūsu mājaslapas internetā, izmantojot GitHub.
+            Nedaudz iepazināmies arī ar Git programmu, kā arī iemācījāmies publicēt mūsu mājaslapas internetā,
+            izmantojot GitHub.
             Šī mājaslapa ir šīs tēmas noslēguma projekts.
           </p>
           <div class="project-tags">
@@ -908,18 +1057,15 @@
           </div>
         </div>
         <div class="project-image">
-          <img
-            src="images/netbeans.png"
-            alt="Programmēšana"
-            style="width: 100%; max-width: 280px; border-radius: 4px; background: var(--line); display: block;"
-          />
+          <img src="images/netbeans.png" alt="Programmēšana"
+            style="width: 100%; max-width: 280px; border-radius: 4px; background: var(--line); display: block;" />
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ABOUT INTRO -->
+
   <section id="par-mani">
     <div class="section-header">
       <span class="section-num">02 / Par mani</span>
@@ -930,19 +1076,22 @@
     <div class="about-intro-grid reveal">
       <div class="about-intro-text">
         <p>
-          Mani sauc Eduards Dričs, man ir 16 gadi. Mācos <em>Rīgas Valsts 1. ģimnāzijā</em> 10. 
-          klasē ar fizikas novirzienu. Aktīvi piedalos matemātikas un fizikas olimpiādēs 
-          un veidoju attiecības ar cilvēkiem visdažādākajās nozarēs. 
+          Mani sauc Eduards Dričs, man ir 16 gadi. Mācos <em>Rīgas Valsts 1. ģimnāzijā</em> 10.
+          klasē ar fizikas novirzienu. Aktīvi piedalos matemātikas un fizikas olimpiādēs
+          un veidoju attiecības ar cilvēkiem visdažādākajās nozarēs.
         </p>
         <p>
           No šī gada apgūtajām tēmām man vislabāk patika 3D modelēšana un programmēšana.
-          Pēc tam seko Excel un Word, kas man sniedza praktiskas prasmes, ko pielietot citos skolas priekšmetos. 
-          Visbeidzot rastra un vektorgrafika, tās bija informatīvas tēmas, tomēr nevaru iedomāties, kur es izmantošu šīs prasmes nākotnē. 
+          Pēc tam seko Excel un Word, kas man sniedza praktiskas prasmes, ko pielietot citos skolas priekšmetos.
+          Visbeidzot rastra un vektorgrafika, tās bija informatīvas tēmas, tomēr nevaru iedomāties, kur es izmantošu šīs
+          prasmes nākotnē.
         </p>
-        <p> Ar programmēšanu un 3D modelēšanu nodarbojos arī ārpus skolas, brīvajā laikā. Mājās veidojo visdažādākos projektus, realizēju savas idejas un eksperimentēju ar jaunām tehnoloģijām. 
-            Pašlaik strādāju pie diviem ambicioziem projektiem: vēja tuneļa izveide un homlab servera izveides. 
-            Šie projekti man palīdz tālāk attīstīt savas prasmes nozarēs, kuras man interesē un kuras būtu pieprasītas nākotnē, kā arī sniedz man iespēju papildināts manu CV.
-            Katrs pabeigts projekts mani iedrošina sākt jaunu un turpināt attīstīties. 
+        <p> Ar programmēšanu un 3D modelēšanu nodarbojos arī ārpus skolas, brīvajā laikā. Mājās veidojo visdažādākos
+          projektus, realizēju savas idejas un eksperimentēju ar jaunām tehnoloģijām.
+          Pašlaik strādāju pie diviem ambicioziem projektiem: vēja tuneļa izveide un homlab servera izveides.
+          Šie projekti man palīdz tālāk attīstīt savas prasmes nozarēs, kuras man interesē un kuras būtu pieprasītas
+          nākotnē, kā arī sniedz man iespēju papildināts manu CV.
+          Katrs pabeigts projekts mani iedrošina sākt jaunu un turpināt attīstīties.
         </p>
       </div>
 
@@ -974,7 +1123,7 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
+
   <section id="prasmes">
     <div class="section-header">
       <span class="section-num">03 / Prasmes</span>
@@ -989,78 +1138,109 @@
         <div class="about-skills">
           <div class="skill-row">
             <span class="skill-name">Rastra grafika</span>
-            <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay:0.1s;--w:60%;" data-width="40%"></div></div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="animation-delay:0.1s;--w:60%;" data-width="40%"></div>
+            </div>
           </div>
           <div class="skill-row">
             <span class="skill-name">Vektorgrafika</span>
-            <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay:0.25s;" data-width="55%"></div></div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="animation-delay:0.25s;" data-width="55%"></div>
+            </div>
           </div>
           <div class="skill-row">
             <span class="skill-name">3D modelēšana</span>
-            <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay:0.4s;" data-width="95%"></div></div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="animation-delay:0.4s;" data-width="95%"></div>
+            </div>
           </div>
           <div class="skill-row">
             <span class="skill-name">Excel / Word</span>
-            <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay:0.55s;" data-width="75%"></div></div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="animation-delay:0.55s;" data-width="75%"></div>
+            </div>
           </div>
           <div class="skill-row">
             <span class="skill-name">Programmēšana</span>
-            <div class="skill-bar"><div class="skill-bar-fill" style="animation-delay:0.7s;" data-width="88%"></div></div>
+            <div class="skill-bar">
+              <div class="skill-bar-fill" style="animation-delay:0.7s;" data-width="88%"></div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="about-right reveal">
         <p>
-          Šī gada datorikas stundās mums bija 5 lielās tēmas - Rastra grafika, Vektorgrafika, 3D modelēšana, Excel / Word un viss beidzot arī programēšanas
+          Šī gada datorikas stundās mums bija 5 lielās tēmas - Rastra grafika, Vektorgrafika, 3D modelēšana, Excel /
+          Word un viss beidzot arī programēšanas
         </p>
         <p>
           Četrām no šīm tēmām bija arī projekti, kurus pildījām un papildinājām visu tēmas laiku.
-          Katrs no projektiem prasīja dažādas iemaņas un prasmes, kuras apguvām stundu laikā un arī ārpus tām. 
-          Dažos no šī projektiem man gāja vieglāk, dažos grūtāk, jo pāris iemaņas biju mācījies pamatskolā un programmēšanas kursos. Toties dažas bija jāmācās no jauna, kā arī dažas no tēmām likās interesantākas nekās citas. 
+          Katrs no projektiem prasīja dažādas iemaņas un prasmes, kuras apguvām stundu laikā un arī ārpus tām.
+          Dažos no šī projektiem man gāja vieglāk, dažos grūtāk, jo pāris iemaņas biju mācījies pamatskolā un
+          programmēšanas kursos. Toties dažas bija jāmācās no jauna, kā arī dažas no tēmām likās interesantākas nekās
+          citas.
         </p>
         <p>
-          Šajā diagrammā ir attēlotas mans pašvērtējums, kā man šķiet, cik labi es apguvu dotās tēmās, un cik labi es varētu pielietot iemācītās prasmes nākotnē.
+          Šajā diagrammā ir attēlotas mans pašvērtējums, kā man šķiet, cik labi es apguvu dotās tēmās, un cik labi es
+          varētu pielietot iemācītās prasmes nākotnē.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- PAPILDUS PROJEKTS -->
+
   <section id="papildus-projekts" style="border-top:2px solid var(--line);padding:4rem 3rem;">
     <div style="max-width:900px;margin:0 auto;">
       <div style="display:flex;align-items:baseline;gap:1.5rem;margin-bottom:2.5rem;">
-        <span style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);">Papildus projekti</span>
+        <span style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);">Papildus
+          projekti</span>
         <div style="flex:1;height:1px;background:var(--line);"></div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;">
-        <a href="forma.html" style="display:block;border:1px solid var(--line);border-radius:4px;padding:2rem 1.8rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px rgba(201,74,43,0.08)'" onmouseout="this.style.borderColor='var(--line)';this.style.boxShadow='none'">
-          <span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.8rem;">01</span>
-          <span style="font-size:1rem;font-family:'DM Serif Display',serif;color:var(--ink);display:block;margin-bottom:0.5rem;">Formas</span>
+        <a href="forma.html"
+          style="display:block;border:1px solid var(--line);border-radius:4px;padding:2rem 1.8rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;"
+          onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px rgba(201,74,43,0.08)'"
+          onmouseout="this.style.borderColor='var(--line)';this.style.boxShadow='none'">
+          <span
+            style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.8rem;">01</span>
+          <span
+            style="font-size:1rem;font-family:'DM Serif Display',serif;color:var(--ink);display:block;margin-bottom:0.5rem;">Formas</span>
           <span style="font-size:0.75rem;color:var(--ink-soft);">Datuma un aprēķinu formas ar JavaScript</span>
         </a>
-        <a href="dzerdaudz.html" style="display:block;border:1px solid var(--line);border-radius:4px;padding:2rem 1.8rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px rgba(201,74,43,0.08)'" onmouseout="this.style.borderColor='var(--line)';this.style.boxShadow='none'">
-          <span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.8rem;">02</span>
-          <span style="font-size:1rem;font-family:'DM Serif Display',serif;color:var(--ink);display:block;margin-bottom:0.5rem;">Dzērieni (daudz)</span>
+        <a href="dzerdaudz.html"
+          style="display:block;border:1px solid var(--line);border-radius:4px;padding:2rem 1.8rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;"
+          onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px rgba(201,74,43,0.08)'"
+          onmouseout="this.style.borderColor='var(--line)';this.style.boxShadow='none'">
+          <span
+            style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.8rem;">02</span>
+          <span
+            style="font-size:1rem;font-family:'DM Serif Display',serif;color:var(--ink);display:block;margin-bottom:0.5rem;">Dzērieni
+            (daudz)</span>
           <span style="font-size:0.75rem;color:var(--ink-soft);">Vairāku dzērienu izvēle ar summas aprēķinu</span>
         </a>
-        <a href="dzer.html" style="display:block;border:1px solid var(--line);border-radius:4px;padding:2rem 1.8rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px rgba(201,74,43,0.08)'" onmouseout="this.style.borderColor='var(--line)';this.style.boxShadow='none'">
-          <span style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.8rem;">03</span>
-          <span style="font-size:1rem;font-family:'DM Serif Display',serif;color:var(--ink);display:block;margin-bottom:0.5rem;">Dzērieni</span>
+        <a href="dzer.html"
+          style="display:block;border:1px solid var(--line);border-radius:4px;padding:2rem 1.8rem;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s;"
+          onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px rgba(201,74,43,0.08)'"
+          onmouseout="this.style.borderColor='var(--line)';this.style.boxShadow='none'">
+          <span
+            style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.8rem;">03</span>
+          <span
+            style="font-size:1rem;font-family:'DM Serif Display',serif;color:var(--ink);display:block;margin-bottom:0.5rem;">Dzērieni</span>
           <span style="font-size:0.75rem;color:var(--ink-soft);">Viena dzēriena izvēle ar cenas parādīšanu</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+
   <footer>
     <span class="footer-left">Eduards Dričs</span>
     <span class="footer-right">Datorikas portfolio · 2025 / 2026</span>
   </footer>
 
   <script>
-    // Scroll reveal — fade in elements
+
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
@@ -1073,7 +1253,7 @@
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
 
-    // Mobile nav: hamburger + dropdown toggles
+
     const nav = document.querySelector('nav');
     const navItems = document.querySelectorAll('.nav-item');
     const navToggle = document.querySelector('.nav-toggle');
@@ -1084,7 +1264,7 @@
     }
 
     if (navToggle) {
-      navToggle.addEventListener('click', function(e) {
+      navToggle.addEventListener('click', function (e) {
         e.stopPropagation();
         const isOpen = navLinksList.classList.toggle('open');
         navToggle.setAttribute('aria-expanded', isOpen);
@@ -1113,7 +1293,7 @@
       });
     });
 
-    // Close when tapping outside
+
     document.addEventListener('click', (e) => {
       const isMobile = window.matchMedia('(max-width: 768px)').matches;
       if (!isMobile) return;
@@ -1122,12 +1302,12 @@
       navLinksList && navLinksList.classList.remove('open');
     });
 
-    // Close after choosing a dropdown link
+
     document.querySelectorAll('.dropdown a').forEach(a => {
       a.addEventListener('click', () => closeAllNavDropdowns());
     });
 
-    // Skill bars animate on scroll
+
     const skillFills = document.querySelectorAll('.skill-bar-fill');
     const skillObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1146,4 +1326,5 @@
   </script>
 
 </body>
+
 </html>
