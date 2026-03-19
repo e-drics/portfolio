@@ -733,7 +733,7 @@
     @media (max-width: 768px) {
       nav {
         padding: 1rem 1.5rem;
-        position: relative;
+        position: fixed;
         flex-wrap: wrap;
       }
 
@@ -1240,6 +1240,9 @@
   </footer>
 
   <script>
+
+    history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
 
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
