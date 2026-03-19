@@ -20,11 +20,25 @@ html {
 
 body {
   background-color: var(--bg);
+  background-image: url('../images/logo_sm3.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 500px;
+  background-attachment: fixed;
   color: var(--ink);
   font-family: 'DM Mono', monospace;
   font-size: 14px;
   line-height: 1.7;
   overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(245, 242, 237, 0.93);
+  pointer-events: none;
+  z-index: -1;
 }
 
 h1 {
