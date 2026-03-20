@@ -1,100 +1,30 @@
 <!DOCTYPE html>
 <html lang="lv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baiti</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            padding: 2rem;
-            background: #f5f5f5;
-        }
-        h2 {
-            margin-bottom: 1rem;
-        }
-        form {
-            background: #fff;
-            padding: 1.5rem 2rem;
-            border: 1px solid #ccc;
-            display: inline-block;
-            min-width: 320px;
-        }
-        .form-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            gap: 0.5rem;
-        }
-        .form-row label {
-            min-width: 180px;
-        }
-        .form-row input[type="number"] {
-            width: 100px;
-            padding: 4px 6px;
-            border: 1px solid #aaa;
-        }
-        .radio-row {
-            margin-bottom: 0.8rem;
-        }
-        .radio-row label {
-            margin-right: 1.5rem;
-        }
-        #rezultats {
-            margin-top: 1rem;
-            font-weight: bold;
-            color: #333;
-            min-height: 1.4em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Baiti</title>
 </head>
 <body>
-    <h2>Lejupielādētās informācijas daudzums</h2>
-    <form id="baitiForm">
-        <div class="form-row">
-            <label for="atrums">Ātrums (Mbit/s):</label>
-            <input type="number" id="atrums" min="0" step="any">
-        </div>
-        <div class="form-row">
-            <label for="sekundes">Sekundes:</label>
-            <input type="number" id="sekundes" min="0" step="any" onfocus="resetForm()">
-        </div>
-        <div class="radio-row">
-            <label><input type="radio" name="vieniba" value="KiB" onclick="aprekina()"> KiB</label>
-            <label><input type="radio" name="vieniba" value="KB" onclick="aprekina()"> KB</label>
-        </div>
-        <p id="rezultats"></p>
-    </form>
 
-    <script>
-        function aprekina() {
-            var sek = parseFloat(document.getElementById('sekundes').value);
-            var atrums = parseFloat(document.getElementById('atrums').value);
-            var checked = document.querySelector('input[name="vieniba"]:checked');
+<form id="forma">
+  <p>Aprēķināt cik daudz informācijas var lejuplādēt</p>
+  <input type="text" id="seconds" onfocus="forma.reset()" oninput="calculate()">
+  sekundēs, ja interneta ātrums ir 25 Mbps.
 
-            if (isNaN(sek) || isNaN(atrums) || !checked) {
-                document.getElementById('rezultats').textContent = 'Lūdzu ievadiet ātrumu un sekundes!';
-                return;
-            }
+  <p>Atbilde</p>
+  <input type="text" id="result" readonly>
+  <input type="radio" name="unit" value="KiB" onclick="calculate()"> KiB
+  <input type="radio" name="unit" value="KB" checked onclick="calculate()"> KB
+</form>
 
-            var bits = atrums * 1000000 * sek;
-            var vieniba = checked.value;
-            var rezultats;
+<script>
+  function calculate() {
+    const secs = parseFloat(document.getElementById('seconds').value);
+    const unit = document.querySelector('input[name="unit"]:checked').value;
+    const bytes = (secs * 25000000) / 8;
+    document.getElementById('result').value = unit === 'KB' ? bytes / 1000 : bytes / 1024;
+  }
+</script>
 
-            if (vieniba === 'KiB') {
-                rezultats = (bits / 8 / 1024).toFixed(2) + ' KiB';
-            } else {
-                rezultats = (bits / 8 / 1000).toFixed(2) + ' KB';
-            }
-
-            document.getElementById('rezultats').textContent =
-                'Lejupielādētās informācijas daudzums: ' + rezultats;
-        }
-
-        function resetForm() {
-            document.getElementById('baitiForm').reset();
-            document.getElementById('rezultats').textContent = '';
-        }
-    </script>
 </body>
 </html>
